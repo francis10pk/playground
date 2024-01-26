@@ -1,0 +1,43 @@
+import UIKit
+import Foundation
+
+
+
+
+//LAB #1
+let firstNameL : Array<String> = ["Daniel", "Mark", "Sam", "Pierre", "Jean"]
+let lastNameL : Array<String> = ["Carvalho", "Zukemberg", "Smith", "Olivier","Francois"]
+let height : Array<Int> = [174, 178, 166, 182, 177] // in centimeters
+let weight : Array<Double> = [82.5, 78.2, 120.0, 71.2, 92.9] // in kg
+//= kg/m2
+var bmiCalc: [Double] = []
+var classBmi = " "
+for i in 0..<height.count
+{
+    bmiCalc.append((weight[i]) / Double(height[i]*height[i])*10000)
+}
+
+
+
+func printInfo(index: Int)
+{
+   
+        switch bmiCalc[index]
+        {
+        case ..<18.5:
+            classBmi = "Underweight"
+        case 18.5...24.9:
+            classBmi = "Normal weight"
+        case 25.0...29.9:
+            classBmi = "Overweight"
+        default:
+            classBmi = "Obesity"
+        }
+        
+    
+    print("Patient Number ",index+1,": ",  firstNameL[index],lastNameL[index],"\n - ","Height : ",height[index],"\n - ","Weight : ",weight[index],"\n - ","BMI : ",String(format: "%.1f",bmiCalc[index]),"\n - ","Classification : ",classBmi)
+}
+for i in 0..<bmiCalc.count
+{
+    printInfo(index: i)
+}
